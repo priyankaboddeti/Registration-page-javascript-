@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>
+            Reset password
+        </title>
+        <style>
+            body{
+                text-align: center;
+            }
+            table{
+                text-align: center;
+                padding-top: 10px;
+            }
+            .contain
+            {
+                text-align: center;
+                margin-left: 38%;
+            }
+            td{
+                padding-bottom: 20px;
+            }
+        </style>
+    </head>
+<body>
+    <form>
+    <h1>Change Password</h1>
+
+    <form method="post" action="">
+        <div class="contain">
+    <table>
+        <tr>
+            <td>
+        <label for="newPassword">Old Password:</label>
+        <input type="password" id="oldPassword" name="oldPassword" title="Old password" /><br>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <label for="newPassword">New Password:</label>
+    <input type="password" id="newPassword" name="newPassword" title="New password" /><br>
+</td>
+</tr>
+<tr>
+    <td>
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword" title="Confirm new password" /><br>
+</td>
+</tr>
+    <!-- <label for="token">Pasword Token:</label>
+    <input type="text" id="token" name="token" title="Password Token" /> -->
+    
+    <tr>
+    <td>
+    <p class="form-actions">
+    <input type="submit" value="Change Password" title="Change password" />
+    </p>
+</td>
+</tr>
+</table>
+</div>
+    
+    </form>
+    <script>
+        var old_pass=document.getElementById("oldPassword").value;
+        var new_pass=document.getElementById("newPassword").value;
+    var edit = localStorage.getItem('sample');
+    console.log(Data)
+    console.log(Data.pass)
+    if(Data.pass===old_pass)
+    {
+
+    }
+    for (var i in edit)
+    {
+        var Data = JSON.parse(localStorage.getItem(employees[i]));
+    }
+</script>
+</body>
+</html>

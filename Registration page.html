@@ -1,0 +1,168 @@
+<html>
+    <head>
+        <title>
+            Registration Page
+        </title>
+        <link rel="stylesheet" href="Styles.css">
+    </head>
+        <body>
+            <div id="container">
+                <h1 class="heading">Register Here</h1>
+                <div class="boxs">
+                <form id="myform">
+                    <div class="textboxx">
+                        <label for="name">Enter Name :</label><br>
+                        <input type="text" class="textbox" id="name" name="name" placeholder="Enter Name" onchange=" validatename()" required></input><br>
+                    </div>
+                    <div class="textboxx">
+                        <label for="name">Enter UserName :</label><br>
+                        <input type="text" class="textbox" id="username" name="username" placeholder="Enter UserName" onchange="validate_Username()" required></input><br>
+                    </div>
+                    <div class="textboxx">
+                        <label for="name">Email :</label><br>
+                        <input type="email" class="textbox" id="email" name="Email"  placeholder="Enter Email" onchange="validate_email()" required></input><br>
+                    </div>
+                    <div class="textboxx">
+                        <label for="name">Phone No :</label><br>
+                        <input type="text" class="textbox" id="phone" name="Phone No"  placeholder="Enter Phone No"   onchange="validate_phone()" required></input><br>
+                    </div>
+                    <div class="textboxx">
+                        <label for="Password">Enter Password :</label><br>
+                        <input type="Password" class="textbox" id="pass" name="Password"  placeholder="Enter Password" onchange="validate_pass()" required></input><br>
+                    </div>
+                   <div class="roletog">
+                       <div class="labname">
+                        <label class="role" for="Role">Role</label>
+                       </div>
+                       <div class="labtog">
+                            <input  class="tog" type="checkbox" name="switch" id="switch">
+                        <label class="lab" for="switch"></label><br>
+                       </div>
+                   </div>
+                        <div class="pass">
+                            <!-- <a href="Respass.html">Forgot Password</a> -->
+                        </div>
+                        <div id="myBtn">
+                            <input class="button" type="button"  id="submit" value="Login"  ></input><br>
+                           
+                    </div>
+                </form>
+            </div>
+
+            </div>
+            <script> 
+            var name;
+            var username;
+            var email;
+            var phone_no;
+            var pass;
+           
+                function validatename()
+                { 
+                    var namepattern=/^[a-zA-Z]+ [a-zA-Z]+$/;
+                    var name=document.getElementById("name").value
+                   
+                    console.log(namepattern.test(name))
+                //Name Validation
+                    if (name==null || name=="")
+                    {
+                        alert("Name can't be blank");
+                    }
+                    else if (!namepattern.test(name))
+                    {  
+                        alert('Please enter your full name (first & last name).');
+                    }
+                }
+                    function validate_Username()
+                    {
+                    var username=document.getElementById("username").value; 
+                    var username_pattern=/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/
+                    if(!username_pattern.test(username))
+                    {
+                        alert("please enter valid username [ForEx: priy.123 / priya_smiley]");
+                    }
+                }
+                
+                function validate_email()
+                {
+                var email=document.getElementById("email").value; 
+                var email_pattern=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                if(!email_pattern.test(email))
+                    {
+                        alert("please enter valid Email Adress");
+                    }
+                }
+                function validate_phone()
+                {
+                    var phone_no=document.getElementById("phone").value; 
+                    var phone_pattern= /^\d{10}$/
+                    if(!phone_pattern.test(phone_no))
+                    {
+                        alert("please enter a valid Phone number")
+                    }
+                }
+                function validate_pass()
+                {
+                   
+                    var pass=document.getElementById("pass").value;
+                    var pass_pattern=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+                    console.log(pass_pattern.test(pass))
+                        if(pass.length<9)
+                        {  
+                            alert("Password must be at least 8 characters long.");  
+                             
+                        } 
+                        else if(!pass_pattern.test(pass))
+                        {
+                            alert("Please enter valid password atleast having One capital,one Number & one special character should be 8 characters long"); 
+                        }
+                        
+                }
+                document.getElementById("submit").addEventListener("click",StoreData)
+                var array=[]; 
+                function create_user(name,username,email,phone_no,pass)
+                {
+                    // console.log(username)
+                    const user={name,username,email,phone_no,pass}
+                //    console.log(user)
+                    let i = array.findIndex(user=>user.email==email)
+                    if(i==-1)
+                        array.push(user)
+                     console.log(array)
+                
+                 //console.log(array)
+                 window.localStorage.setItem('sample', JSON.stringify(array));
+                 var retrievedData = localStorage.getItem('sample');
+                 //console.log(retrievedData)
+                 var Result = JSON.parse(retrievedData);
+                 //console.log(Result)
+                }
+                function StoreData()
+                {
+                    var name=document.getElementById("name").value
+                    var username=document.getElementById("username").value;
+                    var email=document.getElementById("email").value; 
+                    var phone_no=document.getElementById("phone").value;
+                    var pass=document.getElementById("pass").values;
+                    // console.log(username)
+                    create_user(name,username,email,phone_no,pass)  
+                    document.getElementById("myform").reset();  
+                }
+                //document.getElementById("submit").addEventListener("click",but_disable)
+               
+                document.getElementById("submit").addEventListener("click",redirect)
+            //   function but_disable()
+            //   {
+
+            //   }
+           
+    
+              function redirect()
+              {
+                window.open("Respass.html","_blank");
+              
+              }
+                </script>
+                 </body>
+   
+</html>
